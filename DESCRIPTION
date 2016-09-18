@@ -1,0 +1,15 @@
+Package: csv2sql
+Type: Package
+Title: A wrapper to convert csv files to sqlite files
+Version: 0.1.0
+Author: Jackson Kwok
+Maintainer: Jackson Kwok <kcf.jackson@gmail.com>
+Description: Data analysis toolbox.
+License: GPL-3
+LazyData: TRUE
+Imports:
+    sqldf,
+    dplyr,
+    magrittr,
+    readr
+RoxygenNote: 5.0.1
