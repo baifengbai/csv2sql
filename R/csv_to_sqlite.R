@@ -3,8 +3,7 @@
 #' @param db_name Character string; path of the database.
 #' @param table_name Characeter string; (desired) table name.
 #' @export
-csv_to_sql <- function(csv_name, db_name, table_name) {
-  if (missing(table_name)) table_name <- "main"
+csv_to_sql <- function(csv_name, db_name, table_name = "df0") {
   # Create SQL DB
   db_name %>%
     paste("attach", ., "as new", sep = " ") %>%
@@ -21,11 +20,10 @@ csv_to_sql <- function(csv_name, db_name, table_name) {
 #' @param db_name Character string; path of the database.
 #' @param table_name Characeter string; (desired) table name.
 #' @export
-csv_to_sqlite <- function(csv_name, db_name, table_name) {
-  if (missing(table_name)) table_name <- "df0"
+csv_to_sqlite <- function(csv_name, db_name, table_name = "df0") {
   my_db <- dplyr::src_sqlite(db_name, create = TRUE)
   df0 <- readr::read_csv(csv_name)
-  dplyr::copy_to(my_db, df0, temporary= FALSE)
+  dplyr::copy_to(my_db, df0, name = table_name, temporary = FALSE)
 }
 
 
@@ -35,9 +33,8 @@ csv_to_sqlite <- function(csv_name, db_name, table_name) {
 #' @param table_name Characeter string; (desired) table name.
 #' @param chunk_size Integer; the number of rows to include in each chunk.
 #' @export
-csv_to_sqlite_chunked <- function(csv_name, db_name, table_name,
+csv_to_sqlite_chunked <- function(csv_name, db_name, table_name = "df0",
                                   chunk_size = 10000) {
-  if (missing(table_name)) table_name <- "df0"
   write_to_db <- function(df0, pos) {
     dplyr::db_insert_into(con = my_db$con, table = table_name, values = df0)
   }
