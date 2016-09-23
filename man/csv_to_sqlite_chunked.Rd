@@ -4,7 +4,8 @@
 \alias{csv_to_sqlite_chunked}
 \title{A function to convert csv file to sqlite3 file with chunking (using 'dplyr' package).}
 \usage{
-csv_to_sqlite_chunked(csv_name, db_name, table_name, chunk_size = 10000)
+csv_to_sqlite_chunked(csv_name, db_name, table_name = "df0",
+  chunk_size = 10000)
 }
 \arguments{
 \item{csv_name}{Character string; path of the file.}

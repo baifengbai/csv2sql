@@ -4,7 +4,7 @@
 \alias{csv_to_sql}
 \title{A function to convert csv file to sql file (using 'sqldf' package).}
 \usage{
-csv_to_sql(csv_name, db_name, table_name)
+csv_to_sql(csv_name, db_name, table_name = "df0")
 }
 \arguments{
 \item{csv_name}{Character string; path of the file.}
