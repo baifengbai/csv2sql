@@ -3,5 +3,6 @@
 export(csv_to_sql)
 export(csv_to_sqlite)
 export(csv_to_sqlite_chunked)
+export(db_nrow)
 importFrom(magrittr,"%<>%")
 importFrom(magrittr,"%>%")
